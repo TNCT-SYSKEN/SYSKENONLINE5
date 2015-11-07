@@ -60,7 +60,27 @@ module.exports = function(grunt) {
 				dest: '<%= dir %>/assets/css',
 				ext: '.css'
 			}
-		}
+		},
+		// CSSのminify
+    cssmin: {
+      options: {
+        compatibility: 'ie9',
+        keepSpecialComments: '*',
+        sourceMap: true,
+        noAdvanced: true
+      },
+      assets: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= dir %>/css',
+            src: ['**/*.css', '!**/*.min.css'],
+            dest: '<%= dir %>/css',
+            ext: '.min.css'
+          }
+        ]
+      }
+    }
 	});
 
 	for(taskName in pkg.devDependencies) {
