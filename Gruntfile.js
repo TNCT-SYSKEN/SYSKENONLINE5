@@ -96,7 +96,7 @@ module.exports = function(grunt) {
 	});
 
 	for(taskName in pkg.devDependencies) {
-		if(taskName.substring(0, 6) == 'grunt-') {
+		if(taskName.substring(0, 6) === 'grunt-') {
 			grunt.loadNpmTasks(taskName);
 		}
 	}
@@ -105,7 +105,7 @@ module.exports = function(grunt) {
 	// まったく同じタスクを dev/ と dist/ で書く手間がなくなる
 	grunt.task.registerTask('release', 'Switch release mode', function() {
 		grunt.config.merge({
-			dir: "dist"
+			dir: 'dist'
 		});
 	});
 
