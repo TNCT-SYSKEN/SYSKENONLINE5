@@ -85,7 +85,7 @@ module.exports = function(grunt) {
 		},
 		// jslint
 		jshint: {
-			target: ['src/js/*.js']
+			assets: ['src/js/*.js']
 		},
 		// Clean
 		clean: {
