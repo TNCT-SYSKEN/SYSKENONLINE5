@@ -3,8 +3,7 @@
   "description": "WordPress theme for SYSKEN ONLINE",
   "main": "Gruntfile.js",
   "authors": [
-    "NIT",
-    "Tsuyama College System Research Club"
+    "NIT, Tsuyama College System Research Club",
   ],
   "license": "MIT",
   "moduleType": [],
