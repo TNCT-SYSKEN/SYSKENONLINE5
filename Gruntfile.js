@@ -47,6 +47,19 @@ module.exports = function(grunt) {
 				colorizeOutput: true
 			},
 			assets: ['src/scss/*.scss']
+		},
+		// CSSのプロパティソート
+		csscomb: {
+			options: {
+				config: 'src/scss/.csscomb.json'
+			},
+			assets: {
+				expand: true,
+				cwd: '<%= dir %>/assets/css/',
+				src: ['**/*.css'],
+				dest: '<%= dir %>/assets/css',
+				ext: '.css'
+			}
 		}
 	});
 
