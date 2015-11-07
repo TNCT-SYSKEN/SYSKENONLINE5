@@ -83,6 +83,10 @@ module.exports = function(grunt) {
 				]
 			}
 		},
+		// jslint
+		jshint: {
+			target: ['src/js/*.js']
+		},
 		// Clean
 		clean: {
 			css: {
