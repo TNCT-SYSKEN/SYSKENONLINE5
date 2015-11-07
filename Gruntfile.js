@@ -26,6 +26,7 @@ module.exports = function(grunt) {
 				sourcemap: 'none',
 				unixNewlines: true,
 				style: 'expanded',
+				bundleExec: true,
 				loadPath: []
 			},
 			assets: {
@@ -36,6 +37,16 @@ module.exports = function(grunt) {
 					dest: '<%= dir %>/assets/css'
 				}]
 			}
+		},
+		// SCSSのLinter
+		scsslint: {
+			options: {
+				bundleExec: true,
+				config: 'src/scss/.scss-lint.yml',
+				reporterOutput: null,
+				colorizeOutput: true
+			},
+			assets: ['src/scss/*.scss']
 		}
 	});
 

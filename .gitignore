@@ -17,6 +17,10 @@ node_modules/
 .sass-cache
 *.css.map
 
+### Bundler ###
+.bundle/
+vendor/bundler/
+
 ### Sublime Text ###
 *.sublime-workspace
 *.sublime-project
