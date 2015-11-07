@@ -7,6 +7,19 @@ module.exports = function(grunt) {
 	pkg = grunt.file.readJSON('package.json');
 
 	grunt.initConfig({
+		// 出力フォルダ(デフォルトは dev/ 以下)
+		dir: 'dev',
+		// Bowerでインストールしたライブラリの配置
+		bower: {
+			lib: {
+				options: {
+					targetDir: '<%= dir %>/assets/',
+					layout: function(dir, component, source) {
+						return dir;
+					}
+				}
+			}
+		}
 	});
 
 	for(taskName in pkg.devDependencies) {
@@ -14,6 +27,14 @@ module.exports = function(grunt) {
 			grunt.loadNpmTasks(taskName);
 		}
 	}
+
+	// 出力フォルダをdistに切り替えるタスク
+	// まったく同じタスクを dev/ と dist/ で書く手間がなくなる
+	grunt.task.registerTask('release', 'Switch release mode', function() {
+		grunt.config.merge({
+			dir: "dist"
+		});
+	});
 
 	grunt.registerTask('default', []);
 

@@ -15,5 +15,13 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "jquery": "~2.1.4"
+  },
+  "exportsOverride": {
+    "jquery": {
+      "js": "dist/jquery**.js"
+    }
+  }
 }
