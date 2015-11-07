@@ -107,6 +107,9 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', []);
 
+	// CSS Build
+	grunt.registerTask('build-css', ['scsslint:assets', 'clean:css', 'sass:assets', 'csscomb:assets', 'cssmin:assets']);
+
 	grunt.registerTask('eatwarnings', function() {
 		grunt.warn = grunt.fail.warn = function(warning) {
 			grunt.log.error(warning);
