@@ -81,6 +81,12 @@ module.exports = function(grunt) {
 					}
 				]
 			}
+		},
+		// Clean
+		clean: {
+			css: {
+				src: ['<%= dir %>/assets/css/**/*']
+			}
 		}
 	});
 
