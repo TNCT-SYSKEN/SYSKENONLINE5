@@ -68,6 +68,7 @@ module.exports = function(grunt) {
 				compatibility: 'ie9',
 				keepSpecialComments: '*',
 				sourceMap: true,
+				root: '<%= dir %>',
 				noAdvanced: true
 			},
 			assets: {
