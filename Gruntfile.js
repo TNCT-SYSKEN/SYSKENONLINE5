@@ -87,6 +87,35 @@ module.exports = function(grunt) {
 		jshint: {
 			assets: ['src/js/*.js']
 		},
+		// JavaScriptのminify
+		uglify: {
+			options: {
+				compress: {
+          warnings: false
+        },
+        mangle: true,
+        preserveComments: 'some'
+			},
+			assets: {
+				files: [
+					{
+						expand: true,
+						cwd: '<%= dir %>/assets/js',
+						src: ['**/*.js', '!**/*.min.js'],
+						dest: '<%= dir %>/assets/js/',
+						ext: '.min.js'
+					}
+				]
+			}
+		},
+		copy: {
+			js: {
+				expand: true,
+				cwd: 'src/js/',
+				src: ['**/*'],
+				dest: '<%= dir %>/assets/js/'
+			}
+		},
 		// Clean
 		clean: {
 			css: {
