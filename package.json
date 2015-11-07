@@ -1,0 +1,22 @@
+{
+  "name": "SYSKENONLINE5",
+  "version": "5.0.0",
+  "description": "WordPress theme for SYSKEN ONLINE",
+  "author": "NIT, Tsuyama College System Research Club",
+  "website": "http://sysken.org/",
+  "license": "MIT",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TNCT-SYSKEN/SYSKENONLINE5.git"
+  },
+  "devDependencies": {
+    "bower": "^1.6.5",
+    "grunt": "^0.4.5",
+    "grunt-bower-task": "^0.4.0",
+    "grunt-cli": "^0.1.13"
+  }
+}

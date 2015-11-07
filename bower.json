@@ -1,0 +1,19 @@
+{
+  "name": "SYSKENONLINE5",
+  "description": "WordPress theme for SYSKEN ONLINE",
+  "main": "Gruntfile.js",
+  "authors": [
+    "NIT",
+    "Tsuyama College System Research Club"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "http://sysken.org/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

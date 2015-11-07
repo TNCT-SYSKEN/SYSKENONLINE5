@@ -1,0 +1,28 @@
+# original setting
+dist/
+dev/assets/
+
+### Bower ###
+bower_components
+.bower-cache
+.bower-registry
+.bower-tmp
+
+### node.js & Grunt ###
+node_modules/
+.grunt
+.tmp/
+
+### Sass/Compass ###
+.sass-cache
+*.css.map
+
+### Sublime Text ###
+*.sublime-workspace
+*.sublime-project
+
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+
+sftp-config.json
