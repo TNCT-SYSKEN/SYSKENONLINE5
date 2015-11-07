@@ -19,6 +19,23 @@ module.exports = function(grunt) {
 					}
 				}
 			}
+		},
+		// SCSSのビルド
+		sass: {
+			options: {
+				sourcemap: 'none',
+				unixNewlines: true,
+				style: 'expanded',
+				loadPath: []
+			},
+			assets: {
+				files: [{
+					expand: true,
+					cwd: 'src/scss/',
+					src: '**/*.scss',
+					dest: '<%= dir %>/assets/css'
+				}]
+			}
 		}
 	});
 
