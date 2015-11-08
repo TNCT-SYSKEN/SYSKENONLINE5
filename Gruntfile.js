@@ -133,7 +133,7 @@ module.exports = function(grunt) {
 			assets: {
 				files: [{
 					expand: true,
-					cwd: 'src/img/',
+					cwd: '<%= dir %>/assets/img/',
 					src: ['**/*.{png,jpg,gif,svg}'],
 					dest: '<%= dir %>/assets/img/'
 				}]
@@ -145,6 +145,12 @@ module.exports = function(grunt) {
 				cwd: 'src/js/',
 				src: ['**/*'],
 				dest: '<%= dir %>/assets/js/'
+			},
+			img: {
+				expand: true,
+				cwd: 'src/img/',
+				src: ['**/*'],
+				dest: '<%= dir %>/assets/img/'
 			},
 			lib: {
 				expand: true,
@@ -195,19 +201,22 @@ module.exports = function(grunt) {
 	// Watch Task
 	grunt.registerTask('dev', []);
 
-	// Library
+	// Library Install
 	grunt.registerTask('lib', ['bower:lib', 'copy:lib']);
+
+	// Optimize Task
+	grunt.registerTask('opt-assets', ['cssmin:assets', 'uglify:assets', 'image:assets']);
 
 	// Build
 	// CSS
-	grunt.registerTask('build-css', ['sass:assets', 'autoprefixer:assets', 'csscomb:assets', 'cssmin:assets']);
+	grunt.registerTask('build-css', ['sass:assets', 'autoprefixer:assets', 'csscomb:assets']);
 	// JavaScript
-	grunt.registerTask('build-js', ['copy:js', 'uglify:assets']);
+	grunt.registerTask('build-js', ['copy:js']);
 	// Image
-	grunt.registerTask('build-img', ['image:assets']);
+	grunt.registerTask('build-img', ['copy:img']);
 
 	// Release
-	grunt.registerTask('build', ['release', 'init', 'test', 'lib', 'build-css', 'build-js', 'build-img']);
+	grunt.registerTask('build', ['release', 'init', 'test', 'lib', 'build-css', 'build-js', 'build-img', 'opt-assets']);
 
 
 	grunt.registerTask('eatwarnings', function() {
