@@ -198,17 +198,16 @@ module.exports = function(grunt) {
 	// Library
 	grunt.registerTask('lib', ['bower:lib', 'copy:lib']);
 
-	// CSS Build
-	grunt.registerTask('build-css', ['scsslint:assets', 'sass:assets', 'autoprefixer:assets', 'csscomb:assets', 'cssmin:assets']);
-
-	// JavaScript Build
-	grunt.registerTask('build-js', ['eslint:assets', 'copy:js', 'uglify:assets']);
-
-	// Image Build
+	// Build
+	// CSS
+	grunt.registerTask('build-css', ['sass:assets', 'autoprefixer:assets', 'csscomb:assets', 'cssmin:assets']);
+	// JavaScript
+	grunt.registerTask('build-js', ['copy:js', 'uglify:assets']);
+	// Image
 	grunt.registerTask('build-img', ['image:assets']);
 
-	// All Build Task
-	grunt.registerTask('build', ['release', 'init', 'lib', 'build-css', 'build-js', 'build-img']);
+	// Release
+	grunt.registerTask('build', ['release', 'init', 'test', 'lib', 'build-css', 'build-js', 'build-img']);
 
 
 	grunt.registerTask('eatwarnings', function() {
