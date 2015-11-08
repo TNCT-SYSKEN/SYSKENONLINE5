@@ -130,6 +130,17 @@ module.exports = function(grunt) {
 				]
 			}
 		},
+		// 画像最適化
+		image: {
+			dist: {
+				files: [{
+					expand: true,
+					cwd: 'src/img',
+					src: ['**/*.{png,jpg,gif,svg}'],
+					dest: '<%= dir %>/assets/img/'
+				}]
+			}
+		},
 		copy: {
 			js: {
 				expand: true,
