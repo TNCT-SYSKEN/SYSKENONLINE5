@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/TNCT-SYSKEN/SYSKENONLINE5.svg?branch=master)](https://travis-ci.org/TNCT-SYSKEN/SYSKENONLINE5)
 [![devDependency Status](https://david-dm.org/TNCT-SYSKEN/SYSKENONLINE5/dev-status.svg)](https://david-dm.org/TNCT-SYSKEN/SYSKENONLINE5#info=devDependencies)
+[![The MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 このリポジトリは[SYSKEN ONLINE](http://sysken.org/)のWordPressテーマを管理しているリポジトリです。
 
