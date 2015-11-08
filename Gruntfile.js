@@ -147,7 +147,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('build-css', ['scsslint:assets', 'clean:css', 'sass:assets', 'csscomb:assets', 'cssmin:assets']);
 
 	// JavaScript Build
-	grunt.registerTask('build-js', ['jshint:assets', 'clean:js', 'copy:js', 'uglify:assets']);
+	grunt.registerTask('build-js', ['eslint:assets', 'clean:js', 'copy:js', 'uglify:assets']);
 
 	grunt.registerTask('eatwarnings', function() {
 		grunt.warn = grunt.fail.warn = function(warning) {
