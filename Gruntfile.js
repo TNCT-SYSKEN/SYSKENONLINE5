@@ -132,10 +132,10 @@ module.exports = function(grunt) {
 		},
 		// 画像最適化
 		image: {
-			dist: {
+			assets: {
 				files: [{
 					expand: true,
-					cwd: 'src/img',
+					cwd: 'src/img/',
 					src: ['**/*.{png,jpg,gif,svg}'],
 					dest: '<%= dir %>/assets/img/'
 				}]
@@ -156,6 +156,9 @@ module.exports = function(grunt) {
 			},
 			js: {
 				src: ['<%= dir %>/assets/js/**/*']
+			},
+			img: {
+				src: ['<%= dir %>/assets/img/**/*']
 			}
 		}
 	});
@@ -176,11 +179,21 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', []);
 
+	// Test Task
+	grunt.registerTask('test', ['scsslint:assets', 'eslint:assets']);
+
 	// CSS Build
 	grunt.registerTask('build-css', ['scsslint:assets', 'clean:css', 'sass:assets', 'autoprefixer:assets', 'csscomb:assets', 'cssmin:assets']);
 
 	// JavaScript Build
 	grunt.registerTask('build-js', ['eslint:assets', 'clean:js', 'copy:js', 'uglify:assets']);
+
+	// Image Build
+	grunt.registerTask('build-img', ['clean:img', 'image:assets']);
+
+	// All Build Task
+	grunt.registerTask('build', ['build-css', 'build-js', 'build-img']);
+
 
 	grunt.registerTask('eatwarnings', function() {
 		grunt.warn = grunt.fail.warn = function(warning) {
