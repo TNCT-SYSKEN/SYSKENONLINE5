@@ -68,8 +68,8 @@ linters:
 
   Indentation:
     enabled: true
-    character: space # or 'tab'
-    width: 2
+    character: tab
+    width: 1
 
   LeadingZero:
     enabled: false
