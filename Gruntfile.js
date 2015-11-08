@@ -83,8 +83,8 @@ module.exports = function(grunt) {
 				]
 			}
 		},
-		// jslint
-		jshint: {
+		// JavaScript構文チェック (eslint)
+		eslint: {
 			assets: ['src/js/*.js']
 		},
 		// JavaScriptのminify

@@ -10,15 +10,15 @@
     initalized: function() {
       this.hoge = 'hoge';
       $(document)
-        .on('click', 'body', $.proxy(this.Func, this));
+        .on('click', 'body', $.proxy(this.showThis, this));
     },
-    Func: function() {
-      console.log(this);
+    showThis: function() {
+      console.log(obj);
     }
   };
 
   $(document).ready(function() {
-    obj = new Obj();
+    new Obj();
   });
 
 })(jQuery, window, void 0);
