@@ -13,6 +13,7 @@ bower_components
 node_modules/
 .grunt
 .tmp/
+npm-debug.log
 
 ### Sass/Compass ###
 .sass-cache
