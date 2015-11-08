@@ -173,6 +173,37 @@ module.exports = function(grunt) {
 			dist: {
 				src: ['dist/**/*']
 			}
+		},
+		// watch task
+		watch: {
+			scss: {
+				files: ['src/scss/**/*.scss'],
+				tasks: ['scsslint:assets', 'build-css']
+			},
+			js: {
+				files: ['src/js/**/*.js'],
+				tasks: ['eslint:assets', 'build-js']
+			},
+			img: {
+				files: ['src/img/**/*.{png,jpg,gif,svg}'],
+				tasks: ['build-img']
+			},
+			lib: {
+				files: ['src/lib/**/*'],
+				tasks: ['copy:lib']
+			},
+		  configFiles: {
+				files: [
+					'Gruntfile.js',
+					'package.json',
+					'src/scss/.csscomb.json',
+					'src/scss/.scss-lint.yml',
+					'src/js/.eslintrc'
+				],
+				options: {
+					reload: true
+				}
+			}
 		}
 	});
 
@@ -198,9 +229,6 @@ module.exports = function(grunt) {
 	// Test Task
 	grunt.registerTask('test', ['scsslint:assets', 'eslint:assets']);
 
-	// Watch Task
-	grunt.registerTask('dev', []);
-
 	// Library Install
 	grunt.registerTask('lib', ['bower:lib', 'copy:lib']);
 
@@ -214,6 +242,9 @@ module.exports = function(grunt) {
 	grunt.registerTask('build-js', ['copy:js']);
 	// Image
 	grunt.registerTask('build-img', ['copy:img']);
+
+	// Develop
+	grunt.registerTask('dev', ['init', 'lib', 'build-css', 'build-js', 'build-img', 'watch']);
 
 	// Release
 	grunt.registerTask('build', ['release', 'init', 'test', 'lib', 'build-css', 'build-js', 'build-img', 'opt-assets']);
