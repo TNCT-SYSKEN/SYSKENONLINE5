@@ -8,14 +8,14 @@ sudo: false
 cache:
   directories:
     - node_modules
-    - vendor/bundler
+    - vendor/bundle
 
 git:
   submodules: false
 
 before_install:
   - gem install bundler
-  - bundle install --path vendor/bundler
+  - bundle install --path vendor/bundle
   - npm install -g grunt-cli
 
 script:
