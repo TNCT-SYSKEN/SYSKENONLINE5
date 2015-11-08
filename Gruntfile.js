@@ -157,6 +157,12 @@ module.exports = function(grunt) {
 				cwd: 'src/lib/',
 				src: ['**/*', '!**/.gitkeep'],
 				dest: '<%= dir %>/lib/'
+			},
+			dist: {
+				expand: true,
+				cwd: 'dev/',
+				src: ['**/*', '!assets/**/*', '!lib/**/*'],
+				dest: 'dist/'
 			}
 		},
 		// Clean
@@ -242,12 +248,14 @@ module.exports = function(grunt) {
 	grunt.registerTask('build-js', ['copy:js']);
 	// Image
 	grunt.registerTask('build-img', ['copy:img']);
+	// Bundle Build Task
+	grunt.registerTask('build', ['build-css', 'build-js', 'build-img']);
 
 	// Develop
-	grunt.registerTask('dev', ['init', 'lib', 'build-css', 'build-js', 'build-img', 'watch']);
+	grunt.registerTask('dev', ['init', 'lib', 'build', 'watch']);
 
 	// Release
-	grunt.registerTask('build', ['release', 'init', 'test', 'lib', 'build-css', 'build-js', 'build-img', 'opt-assets']);
+	grunt.registerTask('dist', ['release', 'init', 'test', 'lib', 'build', 'opt-assets', 'copy:dist']);
 
 
 	grunt.registerTask('eatwarnings', function() {

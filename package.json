@@ -8,7 +8,7 @@
   "main": "Gruntfile.js",
   "scripts": {
     "test": "grunt test",
-    "start": "grunt build"
+    "start": "grunt dist"
   },
   "repository": {
     "type": "git",
