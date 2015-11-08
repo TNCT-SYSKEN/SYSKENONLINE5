@@ -50,20 +50,25 @@ module.exports = function(grunt) {
 			assets: ['src/scss/*.scss']
 		},
 		// ベンダープレフィックス
-		autoprefixer: {
-			options: {
-				browsers: [
-					'Android 2.3',
-					'Android >= 4',
-					'Chrome >= 20',
-					'Firefox >= 24',
-					'Explorer >= 8',
-					'iOS >= 6',
-					'Opera >= 12',
-					'Safari >= 6'
-				]
-			},
-			assets: {
+		postcss: {
+			autoprefixer: {
+				options: {
+					map: false,
+					processors: [
+						require('autoprefixer')({
+							browsers: [
+								'Android 2.3',
+								'Android >= 4',
+								'Chrome >= 20',
+								'Firefox >= 24',
+								'Explorer >= 8',
+								'iOS >= 6',
+								'Opera >= 12',
+								'Safari >= 6'
+							]
+						})
+					]
+				},
 				expand: true,
 				cwd: '<%= dir %>/assets/css/',
 				src: ['**/*.css'],
@@ -243,7 +248,7 @@ module.exports = function(grunt) {
 
 	// Build
 	// CSS
-	grunt.registerTask('build-css', ['sass:assets', 'autoprefixer:assets', 'csscomb:assets']);
+	grunt.registerTask('build-css', ['sass:assets', 'postcss:autoprefixer', 'csscomb:assets']);
 	// JavaScript
 	grunt.registerTask('build-js', ['copy:js']);
 	// Image
