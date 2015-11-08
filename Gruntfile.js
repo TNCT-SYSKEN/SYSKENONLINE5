@@ -198,7 +198,7 @@ module.exports = function(grunt) {
 				files: ['src/lib/**/*'],
 				tasks: ['copy:lib']
 			},
-		  configFiles: {
+			configFiles: {
 				files: [
 					'Gruntfile.js',
 					'package.json',
