@@ -49,6 +49,28 @@ module.exports = function(grunt) {
 			},
 			assets: ['src/scss/*.scss']
 		},
+		// ベンダープレフィックス
+		autoprefixer: {
+			options: {
+				browsers: [
+					'Android 2.3',
+		      'Android >= 4',
+		      'Chrome >= 20',
+		      'Firefox >= 24',
+		      'Explorer >= 8',
+		      'iOS >= 6',
+		      'Opera >= 12',
+		      'Safari >= 6'
+				]
+			},
+			assets: {
+				expand: true,
+				cwd: '<%= dir %>/assets/css/',
+				src: ['**/*.css'],
+				dest: '<%= dir %>/assets/css/',
+				ext: '.css'
+			}
+		},
 		// CSSのプロパティソート
 		csscomb: {
 			options: {
@@ -144,7 +166,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', []);
 
 	// CSS Build
-	grunt.registerTask('build-css', ['scsslint:assets', 'clean:css', 'sass:assets', 'csscomb:assets', 'cssmin:assets']);
+	grunt.registerTask('build-css', ['scsslint:assets', 'clean:css', 'sass:assets', 'autoprefixer:assets', 'csscomb:assets', 'cssmin:assets']);
 
 	// JavaScript Build
 	grunt.registerTask('build-js', ['eslint:assets', 'clean:js', 'copy:js', 'uglify:assets']);
