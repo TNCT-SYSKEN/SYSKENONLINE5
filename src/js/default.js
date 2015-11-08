@@ -13,7 +13,7 @@
 	};
 	Obj.prototype = {
 		initalized: function() {
-      this.hoge = 'hoge';
+			this.hoge = 'hoge';
 			$(document)
 				.on('click', 'body', $.proxy(this.showThis, this));
 		},
