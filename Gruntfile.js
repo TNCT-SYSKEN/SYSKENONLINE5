@@ -149,7 +149,7 @@ module.exports = function(grunt) {
 			lib: {
 				expand: true,
 				cwd: 'src/lib/',
-				src: ['**/*', , '!**/.gitkeep'],
+				src: ['**/*', '!**/.gitkeep'],
 				dest: '<%= dir %>/lib/'
 			}
 		},
