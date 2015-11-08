@@ -2,9 +2,7 @@
   "name": "SYSKENONLINE5",
   "description": "WordPress theme for SYSKEN ONLINE",
   "main": "Gruntfile.js",
-  "authors": [
-    "NIT, Tsuyama College System Research Club",
-  ],
+  "author": "NIT, Tsuyama College System Research Club",
   "license": "MIT",
   "moduleType": [],
   "homepage": "http://sysken.org/",
