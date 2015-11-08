@@ -1,6 +1,7 @@
 # original setting
 dist/
 dev/assets/
+dev/lib/
 
 ### Bower ###
 bower_components

@@ -13,9 +13,9 @@ module.exports = function(grunt) {
 		bower: {
 			lib: {
 				options: {
-					targetDir: '<%= dir %>/assets/',
+					targetDir: '<%= dir %>/lib/',
 					layout: function(dir, component, source) {
-						return dir;
+						return component + '/' + dir;
 					}
 				}
 			}
@@ -89,8 +89,6 @@ module.exports = function(grunt) {
 			options: {
 				compatibility: 'ie9',
 				keepSpecialComments: '*',
-				sourceMap: true,
-				root: '<%= dir %>',
 				noAdvanced: true
 			},
 			assets: {
@@ -100,7 +98,7 @@ module.exports = function(grunt) {
 						cwd: '<%= dir %>/assets/css/',
 						src: ['**/*.css', '!**/*.min.css'],
 						dest: '<%= dir %>/assets/css/',
-						ext: '.min.css'
+						ext: '.css'
 					}
 				]
 			}
@@ -125,7 +123,7 @@ module.exports = function(grunt) {
 						cwd: '<%= dir %>/assets/js',
 						src: ['**/*.js', '!**/*.min.js'],
 						dest: '<%= dir %>/assets/js/',
-						ext: '.min.js'
+						ext: '.js'
 					}
 				]
 			}
@@ -147,24 +145,33 @@ module.exports = function(grunt) {
 				cwd: 'src/js/',
 				src: ['**/*'],
 				dest: '<%= dir %>/assets/js/'
+			},
+			lib: {
+				expand: true,
+				cwd: 'src/lib/',
+				src: ['**/*', , '!**/.gitkeep'],
+				dest: '<%= dir %>/lib/'
 			}
 		},
 		// Clean
 		clean: {
-			css: {
-				src: ['<%= dir %>/assets/css/**/*']
+			bower: {
+				src: ['bower_components/**/*']
 			},
-			js: {
-				src: ['<%= dir %>/assets/js/**/*']
+			assets: {
+				src: ['<%= dir %>/assets/**/*']
 			},
-			img: {
-				src: ['<%= dir %>/assets/img/**/*']
+			lib: {
+				src: ['<%= dir %>/lib/**/*']
+			},
+			dist: {
+				src: ['dist/**/*']
 			}
 		}
 	});
 
-	for(taskName in pkg.devDependencies) {
-		if(taskName.substring(0, 6) === 'grunt-') {
+	for (taskName in pkg.devDependencies) {
+		if (taskName.substring(0, 6) === 'grunt-') {
 			grunt.loadNpmTasks(taskName);
 		}
 	}
@@ -179,20 +186,29 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', []);
 
+	// Inital
+	grunt.registerTask('init', ['clean:bower', 'clean:assets', 'clean:lib']);
+
 	// Test Task
 	grunt.registerTask('test', ['scsslint:assets', 'eslint:assets']);
 
+	// Watch Task
+	grunt.registerTask('dev', []);
+
+	// Library
+	grunt.registerTask('lib', ['bower:lib', 'copy:lib']);
+
 	// CSS Build
-	grunt.registerTask('build-css', ['scsslint:assets', 'clean:css', 'sass:assets', 'autoprefixer:assets', 'csscomb:assets', 'cssmin:assets']);
+	grunt.registerTask('build-css', ['scsslint:assets', 'sass:assets', 'autoprefixer:assets', 'csscomb:assets', 'cssmin:assets']);
 
 	// JavaScript Build
-	grunt.registerTask('build-js', ['eslint:assets', 'clean:js', 'copy:js', 'uglify:assets']);
+	grunt.registerTask('build-js', ['eslint:assets', 'copy:js', 'uglify:assets']);
 
 	// Image Build
-	grunt.registerTask('build-img', ['clean:img', 'image:assets']);
+	grunt.registerTask('build-img', ['image:assets']);
 
 	// All Build Task
-	grunt.registerTask('build', ['build-css', 'build-js', 'build-img']);
+	grunt.registerTask('build', ['release', 'init', 'lib', 'build-css', 'build-js', 'build-img']);
 
 
 	grunt.registerTask('eatwarnings', function() {
