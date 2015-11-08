@@ -1,0 +1,22 @@
+language: node_js
+
+node_js:
+	- '0.12'
+
+sudo: false
+
+cache:
+	directories:
+		- node_modules
+		- vendor/bundler
+
+git:
+	submodules: false
+
+before_install:
+	- gem install bundler
+	- bundle install --path vendor/bundler
+	- npm install -g grunt-cli
+
+script:
+	- npm start
