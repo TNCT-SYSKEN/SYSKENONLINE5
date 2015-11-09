@@ -21,7 +21,7 @@ npm-debug.log
 
 ### Bundler ###
 .bundle/
-vendor/bundler/
+vendor/bundle/
 
 ### Sublime Text ###
 *.sublime-workspace
