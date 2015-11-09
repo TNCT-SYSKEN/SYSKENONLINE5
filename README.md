@@ -18,47 +18,39 @@
  * 中退フラグの実装
 
 
-## How to build (Draft)
+## How to build
 
-このリポジトリを健全に使用するためには以下のライブラリが必要です。
+このリポジトリを健全に使用するためには以下のライブラリが必要です。なお説明の際に記述しているバージョンはこのREADME.mdを執筆している時点(2015年11月)の安定版・最新版のバージョンです。
 
  * Node.js
    * Grunt
    * Bower
  * Ruby
    * Bundler
-   * Sass
-   * scss-lint
+   * Sass, scss_lint etc...
 
 ### Node.js
 
 #### Node.js 本体のインストール
 
- * [Node.js](https://nodejs.org/en/) - v4.2.2
+ * [Node.js](https://nodejs.org/en/) - v4.2.x
 
-基本的には上記のページからインストーラーをダウンロードし、インストールをすることで使用できます。OS Xの場合はHomebrewを使用するのも手です。
+基本的にはNode.jsのページからインストーラーをダウンロードし、インストールすることで使用できるようになります。
 
 ```
 % node -v
 v4.2.2
 ```
 
-##### OPTION
+##### 備考
 
-Node.js はリリース間隔が速いので、インストーラからインストールするとバージョンアップが面倒になることがあります。必要に応じて [nodebrew](https://github.com/hokaccha/nodebrew) などからインストールしてください。
+Node.js はリリース間隔が短いため、インストーラからインストールしているとバージョンアップが面倒になることがあります。必要に応じて [nodebrew](https://github.com/hokaccha/nodebrew)  や [nodist](https://github.com/marcelklehr/nodist) などからインストールをしてください。
 
-```
-% nodebrew install-binary 4.2.2
-% nodebrew use 4.2.2
-% node -v
-v4.2.2
-```
-
-#### パッケージのインストール
+#### Node.jsのパッケージのインストール
 
  * [npm](https://www.npmjs.com/)
 
-一般的に Node.js のパッケージ管理には npm を使用しますが、このリポジトリも例に漏れず npm を使用します。npm 本体は Node.js をインストールした際に自動的に入っているはずです。
+一般的に Node.js のパッケージ管理には npm を使用します。npm 本体は Node.js をインストールした際に自動的に入っているはずです。
 
 ```
 % npm -v
@@ -75,13 +67,73 @@ v4.2.2
 
  * [Grunt](http://gruntjs.com/)
 
+タスクランナーには(いろいろな制約のせいで未だに) Grunt を使用しています。 Grunt そのものが npm を通じて配信されているので、 ``package.json`` にもインストールをするように記述してありますが、ここではコマンドラインから直接利用できるようにするために ``-g`` オプションを指定してインストールを行います。
+
+``
+% npm insatll -g grunt-cli
+% grunt --version
+grunt-cli v0.1.13
+grunt v0.4.5
+``
+
+#### Bowerのインストール
+
+ * [Bower](http://bower.io/)
+
+jQueryをはじめとするコンポーネントのインストールには Bower を利用しています。これもGruntと同じくコマンドラインから直接利用できるようにするために、 npm から ``-g`` オプションを指定してインストールを行います。
+
+```
+% npm install -g bower
+% bower -v
+1.6.5
+```
+
+Bower からコンポーネントをインストールする処理は既に Grunt でタスクが定義されています。
+
 
 ### Ruby 関連
 
- * Ruby (2.1.0)
-   * Bundler
-   * Sass
-   * scss_lint
+#### Ruby本体のインストール
+
+ * [Ruby](https://www.ruby-lang.org/ja/) - v2.2.3
+
+Sassのコンパイルや構文チェック(Linter)にはRubyを使用します。OS Xやその他Unix/Linux系OSを使用している場合には、Rubyのバージョン管理が容易に行える [rbenv](https://github.com/sstephenson/rbenv) を使用すると便利です。
+
+```
+% ruby -v
+ruby 2.2.3p173 (2015-08-18 revision 51636) [x86_64-darwin14]
+```
+
+
+#### Bundlerのインストール
+
+Rubyのパッケージ管理システムは [RubyGems](https://rubygems.org/) ですが、プロジェクトごとに異なるバージョンのパッケージを利用したい場合に色々な不都合が生じます。そこで、パッケージの管理には [Bundler](http://bundler.io/) というものを使用します。
+
+とはいえ Bundler 本体は RubyGems を使ってインストールします。
+
+```
+% gem install bundler
+% bundle -v
+Bundler version 1.10.6
+```
+
+
+#### Rubyの各種パッケージのインストール
+
+Bundler をインストールしたら各種パッケージをインストールします。インストールするパッケージとバージョンは ``Gemfile`` に記述されているので以下のコマンドによって一括でインストールが行えます。
+
+```
+% bundle install --path vendor/bundle
+```
+
+これで ``vendor/bundle/`` 以下にインストールされます。 Bundler を使ってインストールしたコマンドは ``bundle exec [***]`` で使用することができるはずです。試しにSassコンパイラを起動してみましょう。
+
+```
+% bundle exec sass -v
+Sass 3.4.19 (Selective Steve)
+```
+
+これでビルド環境の準備は完了です。お疲れ様でした！
 
 
 ## Memo
