@@ -226,10 +226,12 @@ module.exports = function(grunt) {
 
 	// 出力フォルダをdistに切り替えるタスク
 	// まったく同じタスクを dev/ と dist/ で書く手間がなくなる
-	grunt.task.registerTask('release', 'Switch release mode', function() {
+	grunt.task.registerTask('release', 'Switch distribution mode', function() {
+		var dir = this.args[0] || 'dist';
 		grunt.config.merge({
-			dir: 'dist'
+			dir: dir
 		});
+		grunt.log.ok('Set distribution mode. Output dir is "' + dir + '/"');
 	});
 
 	grunt.registerTask('default', []);
