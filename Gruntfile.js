@@ -28,7 +28,10 @@ module.exports = function(grunt) {
 				style: 'expanded',
 				bundleExec: true,
 				update: true,
-				loadPath: []
+				loadPath: [
+					'bower_components/bootstrap-sass/assets/stylesheets/',
+					'bower_components/Honoka/scss/'
+				]
 			},
 			assets: {
 				files: [{
@@ -217,6 +220,20 @@ module.exports = function(grunt) {
 					reload: true
 				}
 			}
+		},
+		// 簡易サーバ
+		browserSync: {
+			dev: {
+				bsFiles: {
+					src: ['dev/**/*']
+				},
+				options: {
+					watchTask: true,
+					server: 'dev/',
+					startPath: 'design/',
+					port: 8000
+				}
+			}
 		}
 	});
 
@@ -261,7 +278,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', ['build-css', 'build-js', 'build-img']);
 
 	// Develop
-	grunt.registerTask('dev', ['init', 'lib', 'build', 'watch']);
+	grunt.registerTask('dev', ['init', 'lib', 'build', 'browserSync:dev', 'watch']);
 
 	// Release
 	grunt.registerTask('dist', ['release', 'init', 'test', 'lib', 'build', 'opt-assets', 'copy:dist']);
