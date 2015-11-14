@@ -27,6 +27,7 @@ module.exports = function(grunt) {
 				unixNewlines: true,
 				style: 'expanded',
 				bundleExec: true,
+				update: true,
 				loadPath: []
 			},
 			assets: {
@@ -54,6 +55,7 @@ module.exports = function(grunt) {
 			autoprefixer: {
 				options: {
 					map: false,
+					diff: true,
 					processors: [
 						require('autoprefixer')({
 							browsers: [
