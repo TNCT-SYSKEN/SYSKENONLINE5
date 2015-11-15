@@ -1,1 +1,63 @@
 @charset "UTF-8";
+
+@import "eli/variables";
+@import "honoka/variables";
+@import "bootstrap/variables";
+
+@import "bootstrap/mixins";
+@import "eli/mixins";
+
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,300);
+
+header {
+	h1 {
+		font-family: 'Josefin Sans', Helvetica, Arial, sans-serif;
+		font-size: $font-size-h1 * 2;
+		font-weight: 300;
+		@include retina {
+			&::before {
+				content: "Retina";
+			}
+		}
+	}
+}
+
+// メディアクエリチェック用
+.media-query-check {
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: $padding-base-vertical $padding-base-horizontal;
+	margin: 0;
+	font-size: $font-size-small;
+	color: #fff;
+	background: rgba($brand-warning, 0.8);
+	border-radius: 0 0 $border-radius-large;
+	&::after {
+		content: "default (<#{$screen-xs-min})";
+	}
+	@include xs {
+		background: rgba($brand-danger, 0.8);
+		&::after {
+			content: "xs (≧#{$screen-xs-min})";
+		}
+	}
+	@include sm {
+		background: rgba($brand-info, 0.8);
+		&::after {
+			content: "sm (≧#{$screen-sm-min})";
+		}
+	}
+	@include md {
+		background: rgba($brand-primary, 0.8);
+		&::after {
+			content: "md (≧#{$screen-md-min})";
+		}
+	}
+	@include lg {
+		background: rgba($brand-success, 0.8);
+		&::after {
+			content: "lg (≧#{$screen-lg-min})";
+		}
+	}
+}
